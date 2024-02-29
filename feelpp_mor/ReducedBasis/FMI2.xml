@@ -32,11 +32,17 @@
     <Unit name="K">
       <BaseUnit K="1"/>
     </Unit>
+    <Unit name="m">
+      <BaseUnit m="1"/>
+    </Unit>
   </UnitDefinitions>
 
   <TypeDefinitions>
     <SimpleType name="Temperature">
       <Real quantity="Temperature" unit="K"/>
+    </SimpleType>
+     <SimpleType name="Length">
+      <Real quantity="Length" unit="m"/>
     </SimpleType>
   </TypeDefinitions>
 
@@ -55,25 +61,25 @@
       <Real start="1" declaredType="Temperature"/>
     </ScalarVariable>
     <ScalarVariable name="p0" valueReference="2" causality="input" variability="continuous" description="Parameter0">
-      <Real start="320"/>
+      <Real start="320" declaredType="Temperature"/>
     </ScalarVariable>
-    <ScalarVariable name="p1" valueReference="3" causality="input" variability="continuous" description="Parameter0">
-      <Real start="320"/>
+    <ScalarVariable name="p1" valueReference="3" causality="input" variability="continuous" description="Parameter1">
+      <Real start="320" declaredType="Temperature"/>
     </ScalarVariable>
-    <ScalarVariable name="p2" valueReference="4" causality="input" variability="continuous" description="Parameter0">
-      <Real start="320"/>
+    <ScalarVariable name="p2" valueReference="4" causality="input" variability="continuous" description="Parameter2">
+      <Real start="320" declaredType="Temperature"/>
     </ScalarVariable>
-    <ScalarVariable name="p3" valueReference="5" causality="input" variability="continuous" description="Parameter0">
-      <Real start="320"/>
+    <ScalarVariable name="p3" valueReference="5" causality="input" variability="continuous" description="Parameter3">
+      <Real start="320" declaredType="Temperature"/>
     </ScalarVariable>
-    <ScalarVariable name="p4" valueReference="6" causality="input" variability="continuous" description="Parameter0">
-      <Real start="320"/>
+    <ScalarVariable name="p4" valueReference="6" causality="input" variability="continuous" description="Parameter4">
+      <Real start="320" declaredType="Temperature"/>
     </ScalarVariable>
-    <ScalarVariable name="p5" valueReference="7" causality="input" variability="continuous" description="Parameter0">
-      <Real start="270"/>
+    <ScalarVariable name="p5" valueReference="7" causality="input" variability="continuous" description="Parameter5">
+      <Real start="270" declaredType="Temperature"/>
     </ScalarVariable>
-    <ScalarVariable name="p6" valueReference="8" causality="input" variability="continuous" description="Parameter0">
-      <Real start="0.15"/>
+    <ScalarVariable name="p6" valueReference="8" causality="input" variability="continuous" description="Parameter6">
+      <Real start="0.15" declaredType="Length"/>
     </ScalarVariable>
   </ModelVariables>
 
