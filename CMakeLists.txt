@@ -288,3 +288,7 @@ include(examples/Examples.cmake)
 if (WITH_FMUSIM)
   add_subdirectory(fmusim)
 endif ()
+
+# Feelpp examples: Heat and ReducedBasis
+add_subdirectory(feelpp) #Heat
+add_subdirectory(feelpp_mor) #ReducedBasis

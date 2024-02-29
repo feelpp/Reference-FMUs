@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  fmiVersion="3.0"
+  modelName="Heat"
+  description="This model calculates the average temperture of a room."
+  generationTool="Reference FMUs (development build)"
+  instantiationToken="{1AE5E10D-9521-4DE3-80B9-D0EAAA7D5AF5}">
+
+  <ModelExchange
+    modelIdentifier="Heat"
+    canGetAndSetFMUState="true"
+    canSerializeFMUState="true"/>
+
+  <CoSimulation
+    modelIdentifier="Heat"
+    canGetAndSetFMUState="true"
+    canSerializeFMUState="true"
+    canHandleVariableCommunicationStepSize="true"
+    providesIntermediateUpdate="true"
+    mightReturnEarlyFromDoStep="true"
+    canReturnEarlyAfterIntermediateUpdate="true"
+    fixedInternalStepSize="1e-1"
+    hasEventMode="true"/>
+
+  <UnitDefinitions>
+    <Unit name="K">
+      <BaseUnit K="1"/>
+    </Unit>
+    <Unit name="K/s">
+      <BaseUnit K="1" s="-1"/>
+    </Unit>
+  </UnitDefinitions>
+
+  <TypeDefinitions>
+    <Float64Type name="AvgTemperature" quantity="AvgTemperature" unit="K"/>
+    <Float64Type name="AvgTemperatureDeriv"  quantity="AvgTemperature" unit="K/s"/>
+  </TypeDefinitions>
+
+  <LogCategories>
+    <Category name="logEvents" description="Log events"/>
+    <Category name="logStatusError" description="Log error messages"/>
+  </LogCategories>
+
+  <DefaultExperiment startTime="0" stopTime="3" stepSize="1e-1"/>
+
+  <ModelVariables>
+    <Float64 name="time" valueReference="0" causality="independent" variability="continuous" description="Simulation time"/>
+    <Float64 name="tAvg" valueReference="1" causality="output" variability="continuous" initial="exact" declaredType="AvgTemperature" start="1" description="Temperature of the room" intermediateUpdate="true"/>
+    <Float64 name="der(tAvg)" valueReference="2" causality="local" variability="continuous" initial="calculated" declaredType="AvgTemperatureDeriv" derivative="1" description="Derivative of tAvg"/>
+  </ModelVariables>
+
+  <ModelStructure>
+    <Output valueReference="1"/>
+    <ContinuousStateDerivative valueReference="2"/>
+    <EventIndicator valueReference="1"/>
+  </ModelStructure>
+
+</fmiModelDescription>

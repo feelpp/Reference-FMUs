@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  fmiVersion="2.0"
+  modelName="Heat"
+  description="This model calculates the average temperture of a room."
+  generationTool="Reference FMUs (development build)"
+  guid="{1AE5E10D-9521-4DE3-80B9-D0EAAA7D5AF5}"
+  numberOfEventIndicators="0">
+
+  <ModelExchange
+    modelIdentifier="Heat"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true">
+    <SourceFiles>
+      <File name="all.c"/>
+    </SourceFiles>
+  </ModelExchange>
+
+  <CoSimulation
+    modelIdentifier="Heat"
+    canHandleVariableCommunicationStepSize="true"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true">
+    <SourceFiles>
+      <File name="all.c"/>
+    </SourceFiles>
+  </CoSimulation>
+
+  <UnitDefinitions>
+    <Unit name="K">
+      <BaseUnit K="1"/>
+    </Unit>
+    <Unit name="K/s">
+      <BaseUnit K="1" s="-1"/>
+    </Unit>
+  </UnitDefinitions>
+
+  <TypeDefinitions>
+    <SimpleType name="Temperature">
+      <Real quantity="Temperature" unit="K"/>
+    </SimpleType>
+    <SimpleType name="TemperatureDiff">
+      <Real quantity="TemperatureDiff" unit="K/s"/>
+    </SimpleType>
+  </TypeDefinitions>
+
+  <LogCategories>
+    <Category name="logEvents" description="Log events"/>
+    <Category name="logStatusError" description="Log error messages"/>
+  </LogCategories>
+
+  <DefaultExperiment startTime="0" stopTime="3" stepSize="1e-1"/>
+
+  <ModelVariables>
+    <ScalarVariable name="time" valueReference="0" causality="independent" variability="continuous" description="Simulation time">
+      <Real/>
+    </ScalarVariable>
+    <ScalarVariable name="tAvg" valueReference="1" causality="output" variability="continuous" initial="exact" description="Position of the ball">
+      <Real start="1" declaredType="Temperature"/>
+    </ScalarVariable>
+    <ScalarVariable name="der(tAvg)" valueReference="2" causality="local" variability="continuous" initial="calculated" description="Derivative of h">
+      <Real derivative="2" declaredType="TemperatureDiff"/>
+    </ScalarVariable>
+  </ModelVariables>
+
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="2"/>
+    </Outputs>
+    <Derivatives>
+      <Unknown index="3"/>
+    </Derivatives>
+    <InitialUnknowns>
+      <Unknown index="3"/>
+    </InitialUnknowns>
+  </ModelStructure>
+
+</fmiModelDescription>
