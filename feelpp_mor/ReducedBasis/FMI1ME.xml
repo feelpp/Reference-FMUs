@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="ReducedBasis"
+  modelIdentifier="ReducedBasis"
+  description="This model calculates the trajectory, over time, of a ball dropped from a height of 1 m."
+  generationTool="Reference FMUs (development build)"
+  guid="{1AE5E10D-9521-4DE3-80B9-D0EAAA7D5AF9}"
+  numberOfContinuousStates="1"
+  numberOfEventIndicators="1">
+
+  <DefaultExperiment startTime="0" stopTime="3"/>
+
+  <ModelVariables>
+    <ScalarVariable name="time" valueReference="0" causality="internal" variability="continuous" description="Simulation time">
+      <Real/>
+    </ScalarVariable>
+    <ScalarVariable name="h" valueReference="1" causality="output" description="Position of the ball">
+      <Real start="1"/>
+    </ScalarVariable>
+  </ModelVariables>
+
+</fmiModelDescription>
