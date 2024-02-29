@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  fmiVersion="2.0"
+  modelName="ReducedBasis"
+  description="This model calculates the trajectory, over time, of a ball dropped from a height of 1 m."
+  generationTool="Reference FMUs (development build)"
+  guid="{1AE5E10D-9521-4DE3-80B9-D0EAAA7D5AF9}"
+  numberOfEventIndicators="1">
+
+  <ModelExchange
+    modelIdentifier="ReducedBasis"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true">
+    <SourceFiles>
+      <File name="all.c"/>
+    </SourceFiles>
+  </ModelExchange>
+
+  <CoSimulation
+    modelIdentifier="ReducedBasis"
+    canHandleVariableCommunicationStepSize="true"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true">
+    <SourceFiles>
+      <File name="all.c"/>
+    </SourceFiles>
+  </CoSimulation>
+
+  <UnitDefinitions>
+    <Unit name="m">
+      <BaseUnit m="1"/>
+    </Unit>
+    <Unit name="m/s">
+      <BaseUnit m="1" s="-1"/>
+    </Unit>
+    <Unit name="m/s2">
+      <BaseUnit m="1" s="-2"/>
+    </Unit>
+  </UnitDefinitions>
+
+  <TypeDefinitions>
+    <SimpleType name="Position">
+      <Real quantity="Position" unit="m"/>
+    </SimpleType>
+    <SimpleType name="Velocity">
+      <Real quantity="Velocity" unit="m/s"/>
+    </SimpleType>
+    <SimpleType name="Acceleration">
+      <Real quantity="Acceleration" unit="m/s2"/>
+    </SimpleType>
+  </TypeDefinitions>
+
+  <LogCategories>
+    <Category name="logEvents" description="Log events"/>
+    <Category name="logStatusError" description="Log error messages"/>
+  </LogCategories>
+
+  <DefaultExperiment startTime="0" stopTime="1" stepSize="1"/>
+
+  <ModelVariables>
+    <ScalarVariable name="time" valueReference="0" causality="independent" variability="continuous" description="Simulation time">
+      <Real/>
+    </ScalarVariable>
+    <ScalarVariable name="h" valueReference="1" causality="output" variability="continuous" initial="exact" description="Position of the ball">
+      <Real start="1" declaredType="Position"/>
+    </ScalarVariable>
+  </ModelVariables>
+
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="2"/>
+    </Outputs>
+  </ModelStructure>
+
+</fmiModelDescription>
